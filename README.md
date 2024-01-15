@@ -14,5 +14,7 @@ This project consists of a Vue.js frontend and a Laravel backend. Follow the ste
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/dotSIS/CEOS-Crud.git
+cd CEOS-Crud
+
+## Frontend Setup
