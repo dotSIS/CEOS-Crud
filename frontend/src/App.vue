@@ -7,8 +7,8 @@
     <div v-for="(student, index) in students" :key="index" class="flex mb-4 items-center">
       <!-- Display student information -->
       <input class="input" placeholder="id" size="1" type="text" v-model="student.id" disabled>
-      <input class="input" placeholder="first_name" type="text" v-model="student.first_name">
-      <input class="input" placeholder="last_name" type="text" v-model="student.last_name">
+      <input class="input" placeholder="first_name" type="text" v-model="student.first_name" maxlength="50">
+      <input class="input" placeholder="last_name" type="text" v-model="student.last_name" maxlength="50">
       <!-- Save, Update, and Delete buttons -->
       <button class="button button-green" @click="save(student)">Save</button>
       <button class="button button-orange" @click="put(student)">Update</button>
