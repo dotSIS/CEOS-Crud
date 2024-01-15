@@ -109,4 +109,5 @@ http://localhost:8000/api/students/delete/{id}
 
 ## Access the Application
 
-Visit http://localhost:8080 to access the Vue.js frontend, which communicates with the Laravel backend at http://localhost:8000.
+Visit http://localhost:8080 to access the Vue.js frontend,
+which communicates with the Laravel backend at http://localhost:8000.
