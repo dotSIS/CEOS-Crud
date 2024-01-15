@@ -23,23 +23,30 @@ import axios from 'axios';
 
 export default {
   name: 'App',
+
   data() {
     return {
       apiLog: null,
       students: []
     };
   },
+
   mounted() {
     // Load students when the component is mounted
     this.read();
   },
+
   methods: {
-    read() {
-      // Fetch students from the API
-      axios.get(`http://localhost:8000/api/students/read`)
-        .then(response => (this.students = response.data))
-        .catch(error => console.error('Error loading students:', error));
+    async read() {
+      try {
+        // Fetch students from the API with Sanctum CSRF cookie
+        const response = await axios.get(`http://localhost:8000/api/students/read`);
+        this.students = response.data;
+      } catch (error) {
+        console.error('Error loading students:', error);
+      }
     },
+
     save(student) {
       // Save or update a student based on the presence of an ID
       if (!student.id) {
@@ -48,39 +55,47 @@ export default {
         this.updateStudent(student);
       }
     },
-    createStudent(student) {
-      // Create a new student
-      axios.post(`http://localhost:8000/api/students/create`, student)
-        .then(response => {
-          this.apiLog = response.data;
-          // Reloads students after creation
-          this.read();
-        })
-        .catch(error => console.error('Error creating student:', error));
+
+    async createStudent(student) {
+      try {
+        // Create a new student with Sanctum CSRF cookie
+        const response = await axios.post(`http://localhost:8000/api/students/create`, student);
+        this.apiLog = response.data;
+        // Reloads students after creation
+        this.read();
+      } catch (error) {
+        console.error('Error creating student:', error);
+      }
     },
-    updateStudent(student) {
-      // Update an existing student
-      axios.put(`http://localhost:8000/api/students/update/${student.id}`, student)
-        .then(response => {
-          this.apiLog = response.data;
-          // Reloads students after updating
-          this.read();
-        })
-        .catch(error => console.error('Error updating student:', error));
+
+    async updateStudent(student) {
+      try {
+        // Update an existing student with Sanctum CSRF cookie
+        const response = await axios.put(`http://localhost:8000/api/students/update/${student.id}`, student);
+        this.apiLog = response.data;
+        // Reloads students after updating
+        this.read();
+      } catch (error) {
+        console.error('Error updating student:', error);
+      }
     },
+
     put(student) {
       this.updateStudent(student);
     },
-    del(student) {
-      // Delete a student
-      axios.delete(`http://localhost:8000/api/students/delete/${student.id}`)
-        .then(response => {
-          this.apiLog = response.data;
-          // Reloads students after deletion
-          this.read();
-        })
-        .catch(error => console.error('Error deleting student:', error));
+
+    async del(student) {
+      try {
+        // Delete a student with Sanctum CSRF cookie
+        const response = await axios.delete(`http://localhost:8000/api/students/delete/${student.id}`);
+        this.apiLog = response.data;
+        // Reloads students after deletion
+        this.read();
+      } catch (error) {
+        console.error('Error deleting student:', error);
+      }
     },
+
     addNew() {
       // Add a new empty student to the list
       this.students.push({ first_name: '', last_name: '' });
