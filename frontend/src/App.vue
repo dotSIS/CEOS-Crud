@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="max-w-2xl mx-auto">
     <h1>Students C.R.U.D</h1>
+    <!-- Display API operation responses -->
     {{  apiLog }} <br>
     <button class="button button-green" @click="addNew()">+Add</button> <br>
 
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+// Use axios for sending requests
 import axios from 'axios';
 
 export default {
