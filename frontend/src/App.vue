@@ -2,7 +2,7 @@
   <div id="app" class="max-w-2xl mx-auto">
     <h1>Students C.R.U.D</h1>
     {{  apiLog }} <br>
-    <button class="button button-green" @click="addStudent()">+Add</button> <br>
+    <button class="button button-green" @click="addNew()">+Add</button> <br>
 
     <div v-for="(student, index) in students" :key="index" class="flex mb-4 items-center">
       <!-- Display student information -->

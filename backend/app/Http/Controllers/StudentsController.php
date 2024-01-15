@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Students;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class StudentsController extends Controller
 {
@@ -16,8 +17,14 @@ class StudentsController extends Controller
     public function create(Request $request)
     {
         try {
-            // Validate and create a new student
-            $newStudent = Students::create($request->all());
+            // Validate the incoming request data
+            $validatedData = $request->validate([
+                'first_name' => 'required|string|max:50',
+                'last_name' => 'required|string|max:50',
+            ]);
+
+            // Create a new student using the validated data
+            $newStudent = Students::create($validatedData);
 
             return response()->json(['message' => 'Successfully created!', 'data' => $newStudent], 201);
         } catch (\Exception $e) {
@@ -54,11 +61,17 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            // Validate the incoming request data
+            $validatedData = $request->validate([
+                'first_name' => 'required|string|max:50',
+                'last_name' => 'required|string|max:50',
+            ]);
+
             // Find the student by ID
             $student = Students::findOrFail($id);
 
-            // Update the student's information
-            $student->update($request->all());
+            // Update the student's information with the validated data
+            $student->update($validatedData);
 
             return response()->json(['message' => 'Successfully updated!', 'data' => $student]);
         } catch (\Exception $e) {
