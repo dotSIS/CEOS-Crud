@@ -6,10 +6,9 @@ This project consists of a Vue.js frontend and a Laravel backend. Follow the ste
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) (v14 or later)
+- [XAMPP](https://www.apachefriends.org/)
 - [Composer](https://getcomposer.org/)
-- [PHP](https://www.php.net/) (v7.4 or later)
-- [MySQL](https://www.mysql.com/) (or any other database of your choice)
+- [Node.js](https://nodejs.org/) (v14 or later)
 
 ## Clone the Repository
 
@@ -60,7 +59,13 @@ composer install
 cp .env.example .env
 ```
 
-### 4. Configure Environment Variables
+### 4. Create database
+
+Go to http://localhost/phpmyadmin:
+- create a database named `crud-app`
+- access that database and import file from `backend/database/crud-app.sql`
+
+### 5. Configure Environment Variables
 
 Open the .env file and set the database connection details.
 
@@ -73,19 +78,19 @@ DB_USERNAME=your_database_username
 DB_PASSWORD=your_database_password
 ```
 
-### 5. Generate Application Key
+### 6. Generate Application Key
 
 ```bash
 php artisan key:generate
 ```
 
-### 6. Run Database Migrations
+### 7. Run Database Migrations
 
 ```bash
 php artisan migrate
 ```
 
-### 7. Run the Backend Server
+### 8. Run the Backend Server
 
 ```bash
 php artisan serve
