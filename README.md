@@ -1,4 +1,4 @@
-# CEOSI-Crud
+# CEOS-Crud
 
 ## Overview
 
@@ -13,8 +13,8 @@ This project consists of a Vue.js frontend and a Laravel backend. Follow the ste
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/dotSIS/CEOSI-Crud.git
-cd CEOSI-Crud
+git clone https://github.com/dotSIS/CEOS-Crud.git
+cd CEOS-Crud
 ```
 
 ## Frontend Setup
