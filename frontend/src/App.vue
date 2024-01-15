@@ -123,7 +123,7 @@ export default {
 }
 
 .button:hover {
-  @apply opacity-80;
+  @apply opacity-70;
 }
 
 .button-green {
